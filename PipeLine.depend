@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1577716787 source:e:\project\pipeline\pipeline\main.cpp
+	<SFML/Graphics.hpp>
+	"Pipe.h"
+	"Pipe.cpp"
+
+1577716231 e:\project\pipeline\pipeline\pipe.h
+	<SFML/Graphics.hpp>
+	<string>
+
+1577715990 e:\project\pipeline\pipeline\pipe.cpp
+	"Pipe.h"
+	<SFML/Graphics.hpp>
+

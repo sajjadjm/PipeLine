@@ -1,29 +1,26 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Pipe.cpp"
 
 using namespace std;
 
 int main()
 {
-    cout << "hello";
-    sf::RenderWindow win(sf::VideoMode(200, 200), "SFML Test");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    sf::RenderWindow window(sf::VideoMode(800, 600), "Pipe Line");
 
-    while (win.isOpen())
+    Pipe p(0, 1);
+
+    while (window.isOpen())
     {
         sf::Event event;
-        while (win.pollEvent(event))
+        while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
-            {
-                win.close();
-            }
+                window.close();
         }
 
-        win.clear();
-        win.draw(shape);
-        win.display();
+        window.clear(sf::Color(255, 255, 255));
+        window.display();
     }
 
     return 0;
