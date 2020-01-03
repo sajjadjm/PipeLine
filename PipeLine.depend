@@ -1,14 +1,22 @@
 # depslib dependency file v1.0
-1577716787 source:e:\project\pipeline\pipeline\main.cpp
+1578042042 source:e:\project\pipeline\pipeline\main.cpp
 	<SFML/Graphics.hpp>
-	"Pipe.h"
-	"Pipe.cpp"
+	<iostream>
+	"Graph.cpp"
 
-1577716231 e:\project\pipeline\pipeline\pipe.h
+1577717019 e:\project\pipeline\pipeline\pipe.h
 	<SFML/Graphics.hpp>
 	<string>
 
-1577715990 e:\project\pipeline\pipeline\pipe.cpp
+1578032100 e:\project\pipeline\pipeline\pipe.cpp
 	"Pipe.h"
 	<SFML/Graphics.hpp>
+
+1578041982 e:\project\pipeline\pipeline\graph.cpp
+	"Graph.h"
+	<assert.h>
+	<iostream>
+
+1578041467 e:\project\pipeline\pipeline\graph.h
+	<set>
 
