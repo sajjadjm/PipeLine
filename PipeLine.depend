@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1578042042 source:e:\project\pipeline\pipeline\main.cpp
+1578161473 source:e:\project\pipeline\pipeline\main.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	"Graph.cpp"
@@ -12,11 +12,11 @@
 	"Pipe.h"
 	<SFML/Graphics.hpp>
 
-1578041982 e:\project\pipeline\pipeline\graph.cpp
+1578172325 e:\project\pipeline\pipeline\graph.cpp
 	"Graph.h"
-	<assert.h>
 	<iostream>
+	<iterator>
 
-1578041467 e:\project\pipeline\pipeline\graph.h
-	<set>
+1578171865 e:\project\pipeline\pipeline\graph.h
+	<list>
 

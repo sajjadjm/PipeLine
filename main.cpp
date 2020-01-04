@@ -1,11 +1,14 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Graph.cpp"
 
 using namespace std;
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "Pipe Line");
+
+    Graph g;
 
     while (window.isOpen())
     {

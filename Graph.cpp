@@ -1,53 +1,83 @@
 #include "Graph.h"
-#include <assert.h>
 #include <iostream>
+#include <iterator>
 
 using namespace std;
 
-void Graph::AddVertex()
+void Graph::CreateGridGraph()
 {
-    int newVertexNumber = manyVertices;
-    manyVertices++;
-
-    for(int otherVertexNumber = 0; otherVertexNumber < manyVertices; otherVertexNumber++)
+    for(int i = 0; i < MAXIMUM; i++)
     {
-        adjacencyMatrix[otherVertexNumber][newVertexNumber] = false;
-        adjacencyMatrix[newVertexNumber][otherVertexNumber] = false;
+        for(int j = 0; j < MAXIMUM; j++)
+        {
+            adjacencyMatrix[i][j] = false;
+        }
     }
 }
 
 void Graph::AddEdge(int source, int target)
 {
     adjacencyMatrix[source][target] = true;
+    adjacencyMatrix[target][source] = true;
 }
 
 bool Graph::HasEdge(int source, int target) const
 {
     bool isAnEdge = false;
-    isAnEdge = adjacencyMatrix[source][target];
+    isAnEdge = (adjacencyMatrix[source][target] || adjacencyMatrix[target][source]);
     return isAnEdge;
 }
 
-set<int> Graph::Neighbors(int vertex)
+list<int> Graph::Neighbors(int vertex)
 {
-    set<int> vertexNeighbors;
+    list<int> vertexNeighbors;
 
     for(int index = 0; index < MAXIMUM; index++)
     {
-        if(adjacencyMatrix[vertex][index])
+        if(adjacencyMatrix[vertex][index] || adjacencyMatrix[index][vertex])
         {
-            vertexNeighbors.insert(index);
+            vertexNeighbors.push_back(index);
         }
     }
     return vertexNeighbors;
 }
 
+bool Graph::IsReachable(int source, int target)
+{
+    bool *visited = new bool[MAXIMUM];
+    for (int i = 0; i < MAXIMUM; i++)
+        visited[i] = false;
+
+    list<int> queue;
+
+    visited[source] = true;
+    queue.push_back(source);
+
+    list<int>::iterator i;
+
+    while(!queue.empty())
+    {
+        source = queue.front();
+        queue.pop_front();
+
+        for(i = this->Neighbors(source).begin(); i != this->Neighbors(source).end(); ++i)
+        {
+            if(*i == target)
+            {
+                return true;
+            }
+
+            if(!visited[*i])
+            {
+                visited[*i] = true;
+                queue.push_back(*i);
+            }
+        }
+    }
+}
+
 void Graph::RemoveEdge(int source, int target)
 {
     adjacencyMatrix[source][target] = false;
-}
-
-void Graph::Test()
-{
-    cout << MAXIMUM;
+    adjacencyMatrix[target][source] = false;
 }
