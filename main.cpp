@@ -1,6 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <exception>
 #include "Graph.cpp"
+#include "GameManager.cpp"
 
 using namespace std;
 
@@ -8,7 +10,15 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "Pipe Line");
 
-    Graph g;
+    GameManager g;
+    try
+    {
+        g.GeneratePuzzle();
+    }
+    catch(exception& e)
+    {
+        cout << e.what();
+    }
 
     while (window.isOpen())
     {
