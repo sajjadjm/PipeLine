@@ -1,8 +1,7 @@
 # depslib dependency file v1.0
-1579437720 source:e:\project\pipeline\pipeline\main.cpp
+1579440102 source:e:\project\pipeline\pipeline\main.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
-	<exception>
 	"Graph.cpp"
 	"GameManager.cpp"
 
@@ -14,13 +13,12 @@
 	"Pipe.h"
 	<SFML/Graphics.hpp>
 
-1579268670 e:\project\pipeline\pipeline\graph.cpp
+1579588021 e:\project\pipeline\pipeline\graph.cpp
 	"Graph.h"
 	"GameManager.h"
 	<iostream>
 	<iterator>
 	<algorithm>
-	<bits/stdc++.h>
 
 1578932917 e:\project\pipeline\pipeline\graph.h
 	<list>
@@ -29,7 +27,7 @@
 1579070137 e:\project\pipeline\pipeline\gamemanager.h
 	"Graph.h"
 
-1579437687 e:\project\pipeline\pipeline\gamemanager.cpp
+1579587819 e:\project\pipeline\pipeline\gamemanager.cpp
 	<list>
 	<vector>
 	<iterator>

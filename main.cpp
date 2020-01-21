@@ -1,6 +1,5 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include <exception>
 #include "Graph.cpp"
 #include "GameManager.cpp"
 
@@ -8,6 +7,7 @@ using namespace std;
 
 int main()
 {
+    bool check = false;
     sf::RenderWindow window(sf::VideoMode(800, 600), "Pipe Line");
 
     GameManager g;

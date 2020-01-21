@@ -47,12 +47,14 @@ void GameManager::GeneratePuzzle()
 
         int counter = 0;
 
-        list<int>::iterator i;
+        list<int>::const_iterator i;
         for(i = board.adjacencyMatrix[curser].begin(); i != board.adjacencyMatrix[curser].end(); i++)
         {
+            cout << *i << endl;
             neighbors[counter] = *i;
             counter++;
         }
+        cout << endl;
 
         for(int i = 0; i < 4; i++)
         {
@@ -78,6 +80,7 @@ void GameManager::GeneratePuzzle()
         if(reachables.empty())
         {
             throw underflow_error("Error: No Reachable Vertex!!!");
+            return;
         }
 
         if(reachables.size() > 1)

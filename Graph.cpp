@@ -3,7 +3,6 @@
 #include <iostream>
 #include <iterator>
 #include <algorithm>
-#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -26,7 +25,8 @@ bool Graph::IsReachable(const int s, int d)
       return true;
 
     bool *visited = new bool[MAXIMUM];
-    memset(visited, false, sizeof(visited));
+    for (int i = 0; i < MAXIMUM; i++)
+        visited[i] = false;
 
     list<int> queue;
 
