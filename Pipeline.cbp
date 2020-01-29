@@ -32,6 +32,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Cross.cpp" />
+		<Unit filename="Cross.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="GameManager.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
@@ -42,6 +46,18 @@
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="Graph.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="Line.cpp" />
+		<Unit filename="Line.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="Pipe.cpp" />
+		<Unit filename="Pipe.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="Turn.cpp" />
+		<Unit filename="Turn.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="main.cpp" />

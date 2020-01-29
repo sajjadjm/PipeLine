@@ -1,14 +1,16 @@
 #include <list>
+#include <iostream>
 #include <vector>
 #include <iterator>
 #include <cstdlib>
 #include <ctime>
+#include <cstdlib>
 #include "GameManager.h"
-#include "Graph.h"
+#include "Turn.h"
+#include "Line.h"
+#include "Cross.h"
 
 using namespace std;
-
-int GameManager::temp = 0;
 
 void GameManager::CreateBoard()
 {
@@ -29,17 +31,26 @@ void GameManager::CreateBoard()
     }
 }
 
-void GameManager::GeneratePuzzle()
+map<int, Pipe*> GameManager::GeneratePuzzle()
 {
     srand(time(0));
 
     CreateBoard();
 
     int curser = 0;
+    int source = -5;
+    int target = 0;
 
-    while(curser < 24)
+    map<int, Pipe*, greater<int>> Pipes;
+
+    while(curser <= 24)
     {
         cout << "Curser: " << curser << endl;
+
+        if(curser == 24)
+        {
+            //return;
+        }
 
         vector<int> reachables;
 
@@ -50,11 +61,9 @@ void GameManager::GeneratePuzzle()
         list<int>::const_iterator i;
         for(i = board.adjacencyMatrix[curser].begin(); i != board.adjacencyMatrix[curser].end(); i++)
         {
-            cout << *i << endl;
             neighbors[counter] = *i;
             counter++;
         }
-        cout << endl;
 
         for(int i = 0; i < 4; i++)
         {
@@ -63,38 +72,105 @@ void GameManager::GeneratePuzzle()
                 board.RemoveEdge(curser, neighbors[i]);
                 if(board.IsReachable(neighbors[i], 24))
                 {
-                    cout << neighbors[i] << endl;
                     reachables.push_back(neighbors[i]);
                 }
             }
         }
 
-        vector<int>::iterator it;
-        cout << "Rechables: ";
-        for(it = reachables.begin(); it != reachables.end(); it++)
-        {
-            cout << *it << " ";
-        }
-        cout << endl;
-
         if(reachables.empty())
         {
             throw underflow_error("Error: No Reachable Vertex!!!");
-            return;
         }
 
-        if(reachables.size() > 1)
+        else if(reachables.size() > 1)
         {
             int r = RandomNum(reachables.size());
+            target = reachables[r];
+            Pipe* p = GetPipeTypes(source, curser, target);
+            source = curser;
             curser = reachables[r];
         }
         else
         {
             board.adjacencyMatrix[curser].clear();
+            target = reachables[0];
+            Pipe* p = GetPipeTypes(source, curser, target);
+            source = curser;
             curser = reachables[0];
         }
 
         reachables.clear();
+    }
+}
+
+Pipe* GameManager::GetPipeTypes(int source, int curser, int target)
+{
+    int temp1 = source - curser;
+    int temp2 = curser - target;
+    Pipe* p;
+
+    if((temp1 == -5 && temp2 == -1) || (temp1 == 1 && temp2 == 5))
+    {
+        Turn t(0);
+        p = &t;
+        return p;
+    }
+
+    else if((temp1 == 5 && temp2 == -1) || (temp1 == 1 && temp2 == -5))
+    {
+        Turn t(1);
+        p = &t;
+        return p;
+    }
+
+    else if((temp1 == -1 && temp2 == -5) || (temp1 == 5 && temp2 == 1))
+    {
+        Turn t(2);
+        p = &t;
+        return p;
+    }
+
+    else if((temp1 == -1 && temp2 == 5) || (temp1 == -5 && temp2 == 1))
+    {
+        Turn t(3);
+        p = &t;
+        return p;
+    }
+
+    else if((temp1 == temp2) && (abs(temp1) == 1))
+    {
+        int rand = RandomNum(2);
+
+        if(rand == 0)
+        {
+            Line l(1);
+            p = &l;
+            return p;
+        }
+        else
+        {
+            Cross c(0);
+            p = &c;
+            return p;
+        }
+    }
+
+    else if((temp1 == temp2) && (abs(temp1) == 5))
+    {
+        int rand = RandomNum(2);
+
+        if(rand == 0)
+        {
+            Line l(0);
+            p = &l;
+            return p;
+        }
+        else
+        {
+            Cross c(0);
+            p = &c;
+            return p;
+        }
     }
 }
 

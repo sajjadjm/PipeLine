@@ -1,21 +1,21 @@
 # depslib dependency file v1.0
-1579440102 source:e:\project\pipeline\pipeline\main.cpp
+1580215981 source:e:\project\pipeline\pipeline\main.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	"Graph.cpp"
+	"Pipe.h"
+	"Turn.h"
 	"GameManager.cpp"
 
-1577717019 e:\project\pipeline\pipeline\pipe.h
+1580213055 e:\project\pipeline\pipeline\pipe.h
 	<SFML/Graphics.hpp>
-	<string>
 
 1578032100 e:\project\pipeline\pipeline\pipe.cpp
 	"Pipe.h"
 	<SFML/Graphics.hpp>
 
-1579588021 e:\project\pipeline\pipeline\graph.cpp
+1580215636 e:\project\pipeline\pipeline\graph.cpp
 	"Graph.h"
-	"GameManager.h"
 	<iostream>
 	<iterator>
 	<algorithm>
@@ -24,15 +24,68 @@
 	<list>
 	<array>
 
-1579070137 e:\project\pipeline\pipeline\gamemanager.h
+1580212098 e:\project\pipeline\pipeline\gamemanager.h
 	"Graph.h"
+	"Pipe.h"
+	<map>
 
-1579587819 e:\project\pipeline\pipeline\gamemanager.cpp
+1580286249 e:\project\pipeline\pipeline\gamemanager.cpp
 	<list>
+	<iostream>
 	<vector>
 	<iterator>
 	<cstdlib>
 	<ctime>
+	<cstdlib>
 	"GameManager.h"
+	"Turn.h"
+	"Line.h"
+	"Cross.h"
+
+1580124747 e:\project\pipeline\pipeline\cross.cpp
+	"Cross.h"
+
+1580212378 e:\project\pipeline\pipeline\cross.h
+	<SFML/Graphics.hpp>
+	"Pipe.h"
+
+1580148816 e:\project\pipeline\pipeline\turn.cpp
+	"Turn.h"
+
+1580213045 e:\project\pipeline\pipeline\turn.h
+	<SFML/Graphics.hpp>
+	"Pipe.h"
+
+1580283192 source:e:\project\pipeline\pipeline\cross.cpp
+	"Cross.h"
+
+1580214004 source:e:\project\pipeline\pipeline\graph.cpp
 	"Graph.h"
+	<iostream>
+	<iterator>
+	<algorithm>
+
+1580283181 source:e:\project\pipeline\pipeline\line.cpp
+	"Line.h"
+
+1580212373 e:\project\pipeline\pipeline\line.h
+	<SFML/Graphics.hpp>
+	"Pipe.h"
+
+1580211906 source:e:\project\pipeline\pipeline\pipe.cpp
+	"Pipe.h"
+
+1580213306 source:e:\project\pipeline\pipeline\turn.cpp
+	"Turn.h"
+
+1580213834 source:e:\project\pipeline\pipeline\gamemanager.cpp
+	<list>
+	<iostream>
+	<vector>
+	<iterator>
+	<cstdlib>
+	<ctime>
+	<cstdlib>
+	"GameManager.h"
+	"Turn.h"
 

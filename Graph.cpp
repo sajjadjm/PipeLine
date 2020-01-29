@@ -1,5 +1,4 @@
 #include "Graph.h"
-#include "GameManager.h"
 #include <iostream>
 #include <iterator>
 #include <algorithm>
