@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <cstdlib>
+#include <typeinfo>
 #include "GameManager.h"
 #include "Turn.h"
 #include "Line.h"
@@ -41,15 +42,13 @@ map<int, Pipe*> GameManager::GeneratePuzzle()
     int source = -5;
     int target = 0;
 
-    map<int, Pipe*, greater<int>> Pipes;
-
     while(curser <= 24)
     {
         cout << "Curser: " << curser << endl;
 
         if(curser == 24)
         {
-            //return;
+            return Pipes;
         }
 
         vector<int> reachables;
@@ -86,7 +85,8 @@ map<int, Pipe*> GameManager::GeneratePuzzle()
         {
             int r = RandomNum(reachables.size());
             target = reachables[r];
-            Pipe* p = GetPipeTypes(source, curser, target);
+            GetPipeTypes(source, curser, target);
+            cout << typeid(*(Pipes[curser])).name() << endl;
             source = curser;
             curser = reachables[r];
         }
@@ -94,7 +94,8 @@ map<int, Pipe*> GameManager::GeneratePuzzle()
         {
             board.adjacencyMatrix[curser].clear();
             target = reachables[0];
-            Pipe* p = GetPipeTypes(source, curser, target);
+            GetPipeTypes(source, curser, target);
+            cout << typeid(*(Pipes[curser])).name() << endl;
             source = curser;
             curser = reachables[0];
         }
@@ -103,7 +104,7 @@ map<int, Pipe*> GameManager::GeneratePuzzle()
     }
 }
 
-Pipe* GameManager::GetPipeTypes(int source, int curser, int target)
+void GameManager::GetPipeTypes(int source, int curser, int target)
 {
     int temp1 = source - curser;
     int temp2 = curser - target;
@@ -111,65 +112,53 @@ Pipe* GameManager::GetPipeTypes(int source, int curser, int target)
 
     if((temp1 == -5 && temp2 == -1) || (temp1 == 1 && temp2 == 5))
     {
-        Turn t(0);
-        p = &t;
-        return p;
+        Pipes[curser] = new Turn(0);
     }
 
     else if((temp1 == 5 && temp2 == -1) || (temp1 == 1 && temp2 == -5))
     {
-        Turn t(1);
-        p = &t;
-        return p;
+        Pipes[curser] = new Turn(1);
     }
 
     else if((temp1 == -1 && temp2 == -5) || (temp1 == 5 && temp2 == 1))
     {
-        Turn t(2);
-        p = &t;
-        return p;
+        Pipes[curser] = new Turn(2);
     }
 
     else if((temp1 == -1 && temp2 == 5) || (temp1 == -5 && temp2 == 1))
     {
-        Turn t(3);
-        p = &t;
-        return p;
+        Pipes[curser] = new Turn(3);
     }
 
-    else if((temp1 == temp2) && (abs(temp1) == 1))
+    else if((abs(temp1) == abs(temp2)) && (abs(temp1) == 1))
     {
         int rand = RandomNum(2);
 
         if(rand == 0)
         {
-            Line l(1);
-            p = &l;
-            return p;
+            Pipes[curser] = new Line(1);
         }
         else
         {
-            Cross c(0);
-            p = &c;
-            return p;
+            Pipes[curser] = new Cross(0);
+            board.AddEdge(curser, curser + 1);
+            board.AddEdge(curser, curser - 1);
         }
     }
 
-    else if((temp1 == temp2) && (abs(temp1) == 5))
+    else if((abs(temp1) == abs(temp2)) && (abs(temp1) == 5))
     {
         int rand = RandomNum(2);
 
         if(rand == 0)
         {
-            Line l(0);
-            p = &l;
-            return p;
+            Pipes[curser] = new Line(0);
         }
         else
         {
-            Cross c(0);
-            p = &c;
-            return p;
+            Pipes[curser] = new Cross(0);
+            board.AddEdge(curser, curser + 5);
+            board.AddEdge(curser, curser - 5);
         }
     }
 }

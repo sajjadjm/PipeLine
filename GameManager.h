@@ -10,8 +10,9 @@ class GameManager
 {
 private:
     Graph board;
+    std::map<int, Pipe*> Pipes;
     void CreateBoard();
-    Pipe* GetPipeTypes(int source, int curser, int target);
+    void GetPipeTypes(int source, int curser, int target);
     int RandomNum(int max);
 public:
     std::map<int, Pipe*> GeneratePuzzle();

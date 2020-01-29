@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1580215981 source:e:\project\pipeline\pipeline\main.cpp
+1580329834 source:e:\project\pipeline\pipeline\main.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	"Graph.cpp"
@@ -24,12 +24,12 @@
 	<list>
 	<array>
 
-1580212098 e:\project\pipeline\pipeline\gamemanager.h
+1580331179 e:\project\pipeline\pipeline\gamemanager.h
 	"Graph.h"
 	"Pipe.h"
 	<map>
 
-1580286249 e:\project\pipeline\pipeline\gamemanager.cpp
+1580331763 e:\project\pipeline\pipeline\gamemanager.cpp
 	<list>
 	<iostream>
 	<vector>
@@ -37,6 +37,7 @@
 	<cstdlib>
 	<ctime>
 	<cstdlib>
+	<typeinfo>
 	"GameManager.h"
 	"Turn.h"
 	"Line.h"
