@@ -16,6 +16,7 @@ private:
     int RandomNum(int max);
 public:
     std::map<int, Pipe*> GeneratePuzzle();
+    ~GameManager();
 };
 
 #endif // GAMEMANAGER_H_INCLUDED

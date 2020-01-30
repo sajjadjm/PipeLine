@@ -32,6 +32,15 @@ void GameManager::CreateBoard()
     }
 }
 
+GameManager::~GameManager()
+{
+    map<int, Pipe*>::iterator i;
+    for(i = Pipes.begin(); i != Pipes.end(); i++)
+    {
+        delete i->second;
+    }
+}
+
 map<int, Pipe*> GameManager::GeneratePuzzle()
 {
     srand(time(0));
@@ -99,7 +108,7 @@ map<int, Pipe*> GameManager::GeneratePuzzle()
             source = curser;
             curser = reachables[r];
         }
-        else
+        else if(reachables.size() == 1)
         {
             board.adjacencyMatrix[curser].clear();
             target = reachables[0];
@@ -108,7 +117,6 @@ map<int, Pipe*> GameManager::GeneratePuzzle()
             source = curser;
             curser = reachables[0];
         }
-
         reachables.clear();
     }
 }
@@ -141,13 +149,22 @@ void GameManager::GetPipeTypes(int source, int curser, int target)
 
     else if((abs(temp1) == abs(temp2)) && (abs(temp1) == 1))
     {
-        int rand = RandomNum(2);
+        int rand;
+        if(curser != 0)
+        {
+            rand = RandomNum(2);
+        }
+
+        else
+        {
+            rand = 0;
+        }
 
         if(rand == 0)
         {
             Pipes[curser] = new Line(1);
         }
-        else
+        else if((rand != 0) && (curser + 1 < 25) && (curser - 1 > -1))
         {
             Pipes[curser] = new Cross(0);
             board.AddEdge(curser, curser + 1);
@@ -157,13 +174,22 @@ void GameManager::GetPipeTypes(int source, int curser, int target)
 
     else if((abs(temp1) == abs(temp2)) && (abs(temp1) == 5))
     {
-        int rand = RandomNum(2);
+        int rand;
+        if(curser != 0)
+        {
+            rand = RandomNum(2);
+        }
+
+        else
+        {
+            rand = 0;
+        }
 
         if(rand == 0)
         {
             Pipes[curser] = new Line(0);
         }
-        else
+        else if((rand != 0) && (curser + 5 < 25) && (curser - 5 > -1))
         {
             Pipes[curser] = new Cross(0);
             board.AddEdge(curser, curser + 5);
