@@ -48,6 +48,15 @@ map<int, Pipe*> GameManager::GeneratePuzzle()
 
         if(curser == 24)
         {
+            if(source == 19)
+            {
+                Pipes[curser] = new Line(0);
+            }
+            else if(source == 23)
+            {
+                Pipes[curser] = new Turn(2);
+            }
+            cout << typeid(*(Pipes[curser])).name() << endl;
             return Pipes;
         }
 
