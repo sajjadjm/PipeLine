@@ -2,7 +2,6 @@
 #include <iostream>
 #include <vector>
 #include <iterator>
-#include <cstdlib>
 #include <ctime>
 #include <cstdlib>
 #include <typeinfo>
@@ -66,6 +65,34 @@ map<int, Pipe*> GameManager::GeneratePuzzle()
                 Pipes[curser] = new Turn(2);
             }
             cout << typeid(*(Pipes[curser])).name() << endl;
+
+            for(int i = 0; i < 25; i++)
+            {
+                map<int, Pipe*>::iterator it = Pipes.find(i);
+                if(it != Pipes.end())
+                {
+                    continue;
+                }
+                else
+                {
+                    int rand = RandomNum(3);
+
+                    switch(rand)
+                    {
+                    case 0:
+                        Pipes[i] = new Line(0);
+                        break;
+                    case 1:
+                        Pipes[i] = new Turn(0);
+                        break;
+                    case 2:
+                        Pipes[i] = new Cross(0);
+                    }
+                }
+            }
+
+            Shuffle();
+
             return Pipes;
         }
 
@@ -195,6 +222,17 @@ void GameManager::GetPipeTypes(int source, int curser, int target)
             board.AddEdge(curser, curser + 5);
             board.AddEdge(curser, curser - 5);
         }
+    }
+}
+
+void GameManager::Shuffle()
+{
+    map<int, Pipe*>::iterator it;
+    for(it = Pipes.begin(); it != Pipes.end(); it++)
+    {
+        int rand = RandomNum(4);
+        it->second->SetRandomRotation(rand);
+        cout << it->first << endl;
     }
 }
 

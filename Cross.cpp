@@ -7,6 +7,7 @@ Cross::Cross(unsigned int rot)
 
 void Cross::Draw()
 {
-    spriteTexture.loadFromFile("Sprites/Cross.png");
+    spriteTexture.loadFromFile("Images/Cross.png");
     pipeSprite.setTexture(spriteTexture);
+    pipeSprite.setOrigin(54, 54);
 }

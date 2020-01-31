@@ -7,6 +7,7 @@ Line::Line(unsigned int rot)
 
 void Line::Draw()
 {
-    spriteTexture.loadFromFile("Sprites/Line.png");
+    spriteTexture.loadFromFile("Images/Line.png");
     pipeSprite.setTexture(spriteTexture);
+    pipeSprite.setOrigin(54, 54);
 }

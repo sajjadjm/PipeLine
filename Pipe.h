@@ -5,12 +5,16 @@
 class Pipe
 {
 protected:
+    unsigned int randomRotation;
     unsigned int rotation;
 public:
     sf::Sprite pipeSprite;
     explicit Pipe();
     void SetRotation(int);
+    void Rotate();
     int GetRotation();
+    void SetRandomRotation(int);
+    int GetRandomRotation();
     virtual void Draw() = 0;
 };
 

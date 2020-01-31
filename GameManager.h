@@ -13,6 +13,7 @@ private:
     std::map<int, Pipe*> Pipes;
     void CreateBoard();
     void GetPipeTypes(int source, int curser, int target);
+    void Shuffle();
     int RandomNum(int max);
 public:
     std::map<int, Pipe*> GeneratePuzzle();

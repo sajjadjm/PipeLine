@@ -7,6 +7,7 @@ Turn::Turn(unsigned int rot)
 
 void Turn::Draw()
 {
-    spriteTexture.loadFromFile("Sprites/Turn.png");
+    spriteTexture.loadFromFile("Images/Turn.png");
     pipeSprite.setTexture(spriteTexture);
+    pipeSprite.setOrigin(54, 54);
 }
