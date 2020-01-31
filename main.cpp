@@ -2,6 +2,7 @@
 #include <iostream>
 #include <array>
 #include <map>
+#include <typeinfo>
 #include "Graph.cpp"
 #include "Pipe.h"
 #include "GameManager.cpp"
@@ -11,8 +12,10 @@ using namespace sf;
 
 const int N = 5;
 int pipeSize = 108;
-Vector2f offset(170, 170);
+Vector2f offset(173, 170);
 array<array<Pipe*, 5>, 5> pipeArray;
+
+bool CheckWin();
 
 int main()
 {
@@ -65,6 +68,8 @@ int main()
                         continue;
                     }
                     pipeArray[pos.y][pos.x]->Rotate();
+                    Pipe *p = pipeArray[pos.y][pos.x];
+                    cout << p->GetRotation() << "  " << p->GetRandomRotation() << endl;
                 }
         }
 
@@ -82,9 +87,35 @@ int main()
                 window.draw(p->pipeSprite);
             }
         }
-
+        if(CheckWin())
+        {
+            cout << "You Win!!!" << endl;
+        }
         window.display();
     }
 
     return 0;
+}
+
+bool CheckWin()
+{
+    int counter = 0;
+    for(int i = 0; i < N; i++)
+    {
+        for(int j = 0; j < N; j++)
+        {
+            Pipe* p = pipeArray[i][j];
+            if(p->GetRotation() != -1 && p->GetRotation() != p->GetRandomRotation())
+            {
+                if(typeid(*p) != typeid(Cross))
+                {
+                    counter++;
+                }
+            }
+        }
+    }
+    if(counter == 0)
+        return true;
+    else
+        return false;
 }

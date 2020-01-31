@@ -4,7 +4,6 @@
 #include <iterator>
 #include <ctime>
 #include <cstdlib>
-#include <typeinfo>
 #include "GameManager.h"
 #include "Turn.h"
 #include "Line.h"
@@ -64,7 +63,6 @@ map<int, Pipe*> GameManager::GeneratePuzzle()
             {
                 Pipes[curser] = new Turn(2);
             }
-            cout << typeid(*(Pipes[curser])).name() << endl;
 
             for(int i = 0; i < 25; i++)
             {
@@ -80,13 +78,13 @@ map<int, Pipe*> GameManager::GeneratePuzzle()
                     switch(rand)
                     {
                     case 0:
-                        Pipes[i] = new Line(0);
+                        Pipes[i] = new Line(-1);
                         break;
                     case 1:
-                        Pipes[i] = new Turn(0);
+                        Pipes[i] = new Turn(-1);
                         break;
                     case 2:
-                        Pipes[i] = new Cross(0);
+                        Pipes[i] = new Cross(-1);
                     }
                 }
             }
@@ -131,7 +129,6 @@ map<int, Pipe*> GameManager::GeneratePuzzle()
             int r = RandomNum(reachables.size());
             target = reachables[r];
             GetPipeTypes(source, curser, target);
-            cout << typeid(*(Pipes[curser])).name() << endl;
             source = curser;
             curser = reachables[r];
         }
@@ -140,7 +137,6 @@ map<int, Pipe*> GameManager::GeneratePuzzle()
             board.adjacencyMatrix[curser].clear();
             target = reachables[0];
             GetPipeTypes(source, curser, target);
-            cout << typeid(*(Pipes[curser])).name() << endl;
             source = curser;
             curser = reachables[0];
         }
@@ -232,7 +228,6 @@ void GameManager::Shuffle()
     {
         int rand = RandomNum(4);
         it->second->SetRandomRotation(rand);
-        cout << it->first << endl;
     }
 }
 

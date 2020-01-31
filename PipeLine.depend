@@ -1,14 +1,15 @@
 # depslib dependency file v1.0
-1580426486 source:e:\project\pipeline\pipeline\main.cpp
+1580472279 source:e:\project\pipeline\pipeline\main.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	<array>
 	<map>
+	<typeinfo>
 	"Graph.cpp"
 	"Pipe.h"
 	"GameManager.cpp"
 
-1580425467 e:\project\pipeline\pipeline\pipe.h
+1580470349 e:\project\pipeline\pipeline\pipe.h
 	<SFML/Graphics.hpp>
 
 1578032100 e:\project\pipeline\pipeline\pipe.cpp
@@ -25,19 +26,18 @@
 	<list>
 	<array>
 
-1580390070 e:\project\pipeline\pipeline\gamemanager.h
+1580468203 e:\project\pipeline\pipeline\gamemanager.h
 	"Graph.h"
 	"Pipe.h"
 	<map>
 
-1580410704 e:\project\pipeline\pipeline\gamemanager.cpp
+1580468608 e:\project\pipeline\pipeline\gamemanager.cpp
 	<list>
 	<iostream>
 	<vector>
 	<iterator>
 	<ctime>
 	<cstdlib>
-	<typeinfo>
 	"GameManager.h"
 	"Turn.h"
 	"Line.h"
@@ -46,18 +46,18 @@
 1580124747 e:\project\pipeline\pipeline\cross.cpp
 	"Cross.h"
 
-1580212378 e:\project\pipeline\pipeline\cross.h
+1580470518 e:\project\pipeline\pipeline\cross.h
 	<SFML/Graphics.hpp>
 	"Pipe.h"
 
 1580148816 e:\project\pipeline\pipeline\turn.cpp
 	"Turn.h"
 
-1580213045 e:\project\pipeline\pipeline\turn.h
+1580470400 e:\project\pipeline\pipeline\turn.h
 	<SFML/Graphics.hpp>
 	"Pipe.h"
 
-1580423239 source:e:\project\pipeline\pipeline\cross.cpp
+1580472005 source:e:\project\pipeline\pipeline\cross.cpp
 	"Cross.h"
 
 1580214004 source:e:\project\pipeline\pipeline\graph.cpp
@@ -66,17 +66,18 @@
 	<iterator>
 	<algorithm>
 
-1580423100 source:e:\project\pipeline\pipeline\line.cpp
+1580470736 source:e:\project\pipeline\pipeline\line.cpp
 	"Line.h"
 
-1580212373 e:\project\pipeline\pipeline\line.h
+1580470436 e:\project\pipeline\pipeline\line.h
 	<SFML/Graphics.hpp>
 	"Pipe.h"
 
-1580425501 source:e:\project\pipeline\pipeline\pipe.cpp
+1580470366 source:e:\project\pipeline\pipeline\pipe.cpp
 	"Pipe.h"
+	<iostream>
 
-1580423248 source:e:\project\pipeline\pipeline\turn.cpp
+1580470418 source:e:\project\pipeline\pipeline\turn.cpp
 	"Turn.h"
 
 1580213834 source:e:\project\pipeline\pipeline\gamemanager.cpp

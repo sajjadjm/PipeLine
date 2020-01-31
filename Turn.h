@@ -9,6 +9,7 @@ private:
     sf::Texture spriteTexture;
 public:
     explicit Turn(unsigned int rot);
+    virtual void Rotate() override;
     virtual void Draw() override;
 };
 

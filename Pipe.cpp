@@ -1,4 +1,5 @@
 #include "Pipe.h"
+#include <iostream>
 
 using namespace std;
 
@@ -11,9 +12,13 @@ Pipe::Pipe()
 
 void Pipe::SetRotation(int rot)
 {
-    if(rot < 4 && rot >= 0)
+    if(rot < 4 && rot >= -1)
     {
         rotation = rot;
+    }
+    else
+    {
+        cout << "Invalid argument!!!" << endl;
     }
 }
 
@@ -23,11 +28,6 @@ void Pipe::SetRandomRotation(int rot)
     {
         randomRotation = rot;
     }
-}
-
-void Pipe::Rotate()
-{
-    randomRotation++;
 }
 
 int Pipe::GetRotation()

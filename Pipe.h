@@ -11,7 +11,7 @@ public:
     sf::Sprite pipeSprite;
     explicit Pipe();
     void SetRotation(int);
-    void Rotate();
+    virtual void Rotate() = 0;
     int GetRotation();
     void SetRandomRotation(int);
     int GetRandomRotation();
