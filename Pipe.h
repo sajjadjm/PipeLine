@@ -13,7 +13,7 @@ public:
     void SetRotation(int);
     virtual void Rotate() = 0;
     int GetRotation();
-    void SetRandomRotation(int);
+    virtual void SetRandomRotation(int);
     int GetRandomRotation();
     virtual void Draw() = 0;
 };

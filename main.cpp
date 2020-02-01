@@ -22,6 +22,14 @@ int main()
     GameManager g;
     map <int, Pipe*> pipes;
 
+    Font font;
+    font.loadFromFile("Fonts/BuxtonSketch.ttf");
+    Text winText;
+    winText.setFont(font);
+    winText.setString("You Win!!!");
+    winText.setCharacterSize(100);
+    winText.setFillColor(Color::Red);
+
     try
     {
         pipes = g.GeneratePuzzle();
@@ -51,6 +59,7 @@ int main()
 
     RenderWindow window(VideoMode(780, 780), "Pipe Line");
 
+    bool pause = false;
     while (window.isOpen())
     {
         Event event;
@@ -58,7 +67,7 @@ int main()
         {
             if (event.type == Event::Closed)
                 window.close();
-            if (event.type == Event::MouseButtonPressed)
+            if (event.type == Event::MouseButtonPressed && !pause)
                 if(event.key.code == Mouse::Left)
                 {
                     Vector2i pos = Mouse::getPosition(window) + Vector2i(pipeSize/2, pipeSize/2) - Vector2i(offset);
@@ -69,8 +78,11 @@ int main()
                     }
                     pipeArray[pos.y][pos.x]->Rotate();
                     Pipe *p = pipeArray[pos.y][pos.x];
-                    cout << p->GetRotation() << "  " << p->GetRandomRotation() << endl;
                 }
+            if(CheckWin())
+            {
+                pause = true;
+            }
         }
 
         window.clear(Color(255, 255, 255));
@@ -89,7 +101,8 @@ int main()
         }
         if(CheckWin())
         {
-            cout << "You Win!!!" << endl;
+            winText.setPosition(200, 300);
+            window.draw(winText);
         }
         window.display();
     }

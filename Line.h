@@ -9,6 +9,7 @@ private:
     sf::Texture spriteTexture;
 public:
     explicit Line(unsigned int);
+    virtual void SetRandomRotation(int rot) override;
     virtual void Rotate() override;
     virtual void Draw() override;
 };
